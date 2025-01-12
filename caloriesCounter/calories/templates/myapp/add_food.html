@@ -1,0 +1,17 @@
+{% extends "home.html" %}
+{% block title %}add food{% endblock  %}
+
+<div class="mainBody">
+{%block content%}
+    <div class="add_food">
+        <form method="POST">
+            {% csrf_token %}
+            <table>
+            {{ form.as_ol }}
+            </table>
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'home' %}">back to home</a>
+    </div>
+{%endblock%}
+</div>

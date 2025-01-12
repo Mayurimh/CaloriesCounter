@@ -1,0 +1,59 @@
+{% load static%}
+<!DOCTYPE home>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {%block title%}boost health{%endblock%}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    </head>
+<body>
+    <img src="{% static 'image/home.jpg' %}" alt="My image">
+<div class="motha">
+    <div class="chota">
+        <a href="{% url 'home' %}">BOOST HEALTH</a>
+        <div class="chotu">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'add_user_entry' %}">check Calories</a></li>
+                <li><a href="{% url 'select_food' %}">See Food</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    
+
+    <div class="mainBody">
+            {%block content%}
+                <div class="Maincontent" >
+                    <h2 class="text-center mb-5 mt-2 text-bold text-uppercase">hiii, {{ user.username }}!
+                        <br>Welcome to Boost Health
+                    </h2>
+                    <div class="conatiner">
+                        <div class="box">
+                            <p>
+                                "A calorie counter helps manage weight by tracking caloric intake and promotes healthier eating habits by increasing nutritional awareness. It identifies eating patterns, aids in managing chronic conditions, and supports personalized dietary goals."
+                            </p>
+                            <p>Try Now</p>
+                            <button class="boxBtn"><a href="{% url 'add_user_entry' %}">Check Calories</a></button>
+                            </div>
+                        <div class="box">
+                            <p>
+                                "Yoga is not a work-out it is a work-in, and this is the point of spiritual practice to make us teachable to open up our hearts and focus our awareness so that we can know what we already know and be who we already are."
+                            </p>
+                            <p>join with us</p></br>
+                            <button class="boxBtn">start Yoga</button>
+                        </div>
+                    </div>
+                </div>
+            {%endblock%}
+    </div>
+</div>
+<footer>
+    <p>copyright &copy 2024 Calorie Counter. All rights reserved.</p>
+</footer>
+
+</body>
+</html> 

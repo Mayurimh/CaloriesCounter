@@ -1,0 +1,41 @@
+{% extends "home.html" %}
+{%block title%}signup{%endblock%}
+{%block content%}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+        <h2 class="text-muted">Sign Up</h2>
+        <form method="post" class="form-horizontal" action="{%url 'signup'%}">           
+           {%csrf_token%}
+           <div class="form-group">
+            <label for="{{form.username.id_for_label}}">UseName:</label>
+            <input type="text" name="{{form.username.name}}" class="form-control" values="{{form.username.value}}"/>
+            <span class="text-danger">{{form.username.errors}}</span>
+           </div>
+           {% comment %} password {% endcomment %}
+           <div class="form-group">
+            <label for="{{form.password1.id_for_label}}">Password:</label>
+            <input type="password" name="{{form.password1.name}}" class="form-control" values="{{form.password1.value}}"/>
+            <span class="text-danger">{{form.password1.errors}}</span>
+           </div>
+
+           {% comment %} password {% endcomment %}
+           <div class="form-group">
+            <label for="{{form.password2.id_for_label}}">Retype Password:</label>
+            <input type="password" name="{{form.password2.name}}" class="form-control" values="{{form.password2.value}}"/>
+            <span class="text-danger">{{form.password2.errors}}</span>
+           </div>
+
+
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            <a href="{% url 'login' %}">Login</a>
+        </div>
+        <div class="col-6">
+            <img src="https://media.istockphoto.com/id/171100137/photo/food-diary.webp?b=1&s=170667a&w=0&k=20&c=n3zQq-4PIPTJLPM08ILvieqOQxaJxdqjFm5u5rlTRog="
+                        alt="image"
+                        class="img-fluid"/>
+        </div>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,31 @@
+{% extends "home.html" %}
+
+{% block title %}select food{% endblock  %}
+
+{%block content%}
+<div class="container my-6">
+    <h2 class="text-center">Food List</h2>
+    <div class="card card-body my-3">
+        <table>
+            <tr>
+                <th>SR.No</th>
+                <th>Fooditem</th>
+                <th>Calorie</th>
+                <th>Carbs</th>
+                <th>Fats</th>
+                <th>Protein</th>
+            </tr>
+            {% for food in food_items %}
+            <tr>
+                <td>{{food.id}}</td>
+                <td>{{food.name}}</td>
+                <td> {{food.calorie}}</td>
+                <td> {{food.carbohydrate}}</td>
+                <td> {{food.fats}}</td>
+                <td> {{food.protein}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{%endblock%}

@@ -1,0 +1,212 @@
+{% load static%}
+<!DOCTYPE home>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% comment %} {%block title%}boost health{%endblock%} {% endcomment %}
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"0>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    </head>
+    <style>
+      body{
+        font-family: Georgia, serif;
+      }
+      .card{
+        opacity:0.5;
+      }
+      .card:hover{
+        opacity:1.0;
+        transform: scale(1.07);
+        cursor:pointer;
+      }
+      .text {
+        opacity: 1;
+        animation: animate 3s ease-out forwards infinite;
+        animation-delay: 1s;
+    }
+
+    /* For animation */
+    @keyframes animate {
+        0% {
+            letter-spacing: -15px;
+        }
+
+        20% {
+            letter-spacing: 10px;
+        }
+
+        100% {
+            letter-spacing: 2px;
+        }
+    }
+
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      color: white;
+      text-align: center;
+    }
+    </style>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+              <a class="navbar-brand" href="#">Diet Tracker</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'add_user_entry' %}">check Nutrition</a>
+                  </li>
+                  <li>
+                    <a class="nav-link" href="{% url 'select_food' %}">See Food</a>
+                  </li>
+
+                  {% if user.is_authenticated %}
+                    <li><a  class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+                  {% else %}
+                    <li><a  class="nav-link" href="{% url 'signup' %}">Login/Register</a></li>
+                  {% endif %}
+                  {% comment %} <li><a class="nav-link" href="{% url 'login' %}">login</a></li> {% endcomment %}
+                </ul>
+              </div>
+            </div>
+          </nav>
+    </header>
+    {%block content%}
+    <main>
+      <div class="container-fluid">
+          <div class="row" style="background-color:yellow">
+              <div class="col">
+              <center>
+              <h2 class="text">Welcome in diet Tracker</h2>
+              <marquee> One Step Towards Fitness.Eat Healthy Stay Healthy :)</marquee>
+              </center>
+              </div>
+          </div>
+        </div>
+      <div class="container-fluid">
+        <div class="row" style="background:linear-gradient(to top,black,white)">
+          <div class="container">
+            <div class="row my-3" >
+                <div class="col-md-7">
+                    <img src="https://media.istockphoto.com/id/1341976416/photo/healthy-eating-and-diet-concepts-top-view-of-spring-salad-shot-from-above-on-rustic-wood-table.webp?b=1&s=170667a&w=0&k=20&c=xYV0gZRXSLeAGJAPaNFaLH1V3VLNLY3KZGVL-neS1js="
+                    alt="image"
+                    class="img-fluid"/>
+                </div>
+                <div class="col-5">
+                  <h2> Hello, {{user.username}}</h2>
+                    <h1>Track Your Diet</h1>
+                    <p class="mt-4">
+                        A healthy diet typically includes nutrient-dense foods from all of the major food groups, including lean proteins, whole grains, healthy fats, and fruits and vegetables of many colors. Healthy eating habits also include replacing foods that contain trans fats, added salt, and sugar with more nutritious options.
+                    </p>
+                    <button type="button" class="btn btn-primary mt-3" id="checkcalBtn" onclick="">Check Nutrition</button>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  
+
+        <div class="container-fluid" style="background-color: black; padding:1rem">
+            <div class="container">
+            <div class="row  my-4">
+                <div class="card-group">
+                    <div class="card" style="margin:1rem">
+                      <img src="https://media.istockphoto.com/id/536557177/photo/close-up-on-a-man-measuring-his-belly.webp?b=1&s=170667a&w=0&k=20&c=VqwAYc12-51J04U-VQ0J2lZ3kcClo0B1DRSRDPOTO4Q=" class="card-img-top" alt="image"
+                      style="width:100%;height:200px">
+                      <div class="card-body">
+                        <h5 class="card-title">Weight Loss</h5>
+                        <p class="card-text" style="height:10rem">A weight loss diet typically involves reducing calorie intake, making healthier food choices, and ensuring a balanced intake of nutrients.</p>
+                        <a href="#" class="btn btn-primary">read more</a>
+                      </div>
+                    </div>
+
+                    <div class="card" style="margin:1rem">
+                        <img src="https://media.istockphoto.com/id/1464203424/photo/high-calorie-food.webp?b=1&s=170667a&w=0&k=20&c=wQKZLcq0vmfJPMIAwMuqbAF4Egnuq2RPzC7ifsQpdy0=" class="card-img-top" alt="image"
+                        style="width:100%;height:200px">
+                      <div class="card-body">
+                        <h5 class="card-title">Junk Food</h5>
+                        <p class="card-text"style="height:10rem">Junk food refers to food items that are high in calories but low in nutritional value. These foods are typically rich in sugar, salt, and unhealthy fats, and they often contain artificial ingredients and preservatives.</p>
+                        <a href="#" class="btn btn-primary">read more</a>
+                      </div>
+                    </div>
+
+                    <div class="card" style="margin:1rem">
+                        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aGVhbHRoeSUyMGZvb2R8ZW58MHx8MHx8fDA%3D" class="card-img-top" alt="image" style="width:100%;height:200px">
+                        <div class="card-body">
+                        <h5 class="card-title">healthy Food</h5>
+                        <p class="card-text"style="height:10rem">Healthy food refers to foods that provide essential nutrients, support overall well-being, and promote good health. These foods are typically natural, minimally processed, and rich in vitamins, minerals, fiber, and other beneficial compounds.</p>
+                        <a href="#" class="btn btn-primary">read more</a>
+                      </div>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+
+    </main>
+    {%endblock%}
+    <footer class="bg-primary text-white text-center text-lg-start">
+        <!-- Grid container -->
+        <div class="container p-4">
+          <!--Grid row-->
+          <div class="row">
+            <!--Grid column-->
+            <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Diet Tracker</h5>
+      
+              <p>
+                A healthy diet typically includes nutrient-dense foods from all of the major food groups, including lean proteins, whole grains, healthy fats, and fruits and vegetables of many colors. Healthy eating habits also include replacing foods that contain trans fats, added salt, and sugar with more nutritious options.
+              </p>
+            </div>
+            <!--Grid column-->
+      
+            <!--Grid column-->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+              <h5 class="text-uppercase">Join with Us</h5>
+      
+              <ul class="list-unstyled mb-0">
+                <li>
+                    <a href="https://www.instagram.com/accounts/login/?hl=en" style="color:white">instagram</a>  
+                    
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/home"style="color:white">linkedin</a>
+                </li>
+                <li>
+                    <a href="https://mail.google.com/mail/u/0/#inbox"style="color:white">Email</a>
+                </li>
+              </ul>
+            </div>
+            <!--Grid column-->
+        </div>
+          <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2020 Copyright Diet Tracker
+        </div>
+        <!-- Copyright -->
+</footer>
+<script>
+  let checkcalBtn=document.getElementById("checkcalBtn");
+  const moveCalCulatecal=()=>{
+    location.href="{% url 'add_user_entry'%}"
+  }
+  checkcalBtn.addEventListener("click",moveCalCulatecal);
+</script>
+</body>
+</html> 
